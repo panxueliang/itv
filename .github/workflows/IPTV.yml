@@ -1,0 +1,40 @@
+名称： IPTV全部
+在：
+推：
+浙江：
+-名称：每日任务
+: 每天下午 4:00 运行任务
+计划任务：“0 16 * * *”
+枢纽：
+-主要的
+工作：
+建造者：
+运行： ubuntu-latest
+脚步：
+-名称：结帐代码
+使用： actions/checkout@v2
+-名称：设置Python
+使用： actions/setup-python@v2
+和：
+python-版本： 3.x
+-名称：安装依赖项
+运行： pip install selenium requests
+-名称：安装Chrome WebDriver
+运行：|
+LATEST_CHROMEDRIVER_VERSION=120.0.6099.109
+卷曲-sS -o chromedriver_linux64.zip“https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/120.0.6099.109/linux64/chrome-headless-shell-linux64.zip”
+sudo 解压 chromedriver_linux64.zip -d /usr/local/bin
+rm chromedriver_linux64.zip
+- name :设置 chromedriver 路径
+运行：|
+sudo ln -sf /usr/local/bin/chrome-headless-shell-linux64/chrome-headless-shell /usr/local/bin/chromedriver
+sudo chmod +x /usr/local/bin/chromedriver
+-名称：运行脚本
+运行： python $ {   { github.workspace }  } /IPTV.py
+-姓名：提交更改
+运行：|
+git config --本地用户.email "18081870506@189.cn"
+git config --本地用户.name "潘雪良"
+git 添加 .
+git commit *.txt -m "添加生成的文件"
+git 推 -f
